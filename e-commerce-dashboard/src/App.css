@@ -59,6 +59,7 @@ body {
 .headerWrapper .header .part2 .countryDrop span.ml-auto svg{
   opacity: 0.7;
 }
+/*search style starts here  */
 .headerSearch{
   width: 60%;
   height: 60px;
