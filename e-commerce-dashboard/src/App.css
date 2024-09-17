@@ -99,7 +99,7 @@ body {
   font-size: 35px;
   outline: none;
 }
-
+/* background padding for location search */
 .locationModel .MuiPaper-elevation{
   padding: 25px;
   position: relative;
