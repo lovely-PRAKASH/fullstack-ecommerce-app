@@ -182,7 +182,7 @@ header .cartTab .price{
   font-size: 18px;
   font-weight: 700;
 }
-nav .container .navpart1 Button {
+nav .container .navpart1 .catwrapper .allCatTab {
   outline: none;
   color: white;
   height: 45px;
@@ -193,6 +193,44 @@ nav .container .navpart1 Button {
   justify-content: space-between;
   align-items: center;
 }
+nav .container .navpart1 .sideNavbar{
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  border: 1px solid rgb(0, 0, 0,0.1);
+  width: 100%;
+  top: 125%;
+  height: auto;
+  transition: all 0.2s ease-in-out;
+}
+nav .container .navpart1 .catwrapper .sideNavbar.open{
+  visibility: inherit;
+  height: auto;
+  opacity: 1;
+  border: 1px solid rgb(0, 0, 0,0.1);
+  width: 100%;
+  top: 125%;
+}
+nav .container .navpart1 .sideNavbar ul{
+list-style: none;
+} 
+nav .container .navpart1 .sideNavbar ul li{
+  width: 100%;
+  padding: 5px 15px;
+}
+nav .container .navpart1 .sideNavbar ul li a{
+  text-decoration: none;
+  width: 100%;
+}
+nav .container .navpart1 .sideNavbar ul li a Button{
+  width: 100%;
+  outline: none;
+  text-transform: capitalize;
+  color: #000;
+  font-weight: 500;
+  justify-content: flex-start;
+}
+
 nav .allCatTab:hover{
   background: #2bbef9;
 }
@@ -225,4 +263,41 @@ nav .navpart2 ul li a{
 nav .navpart2 ul li a:hover{
   color: #2bbef9;
   background: #f0faff;
+}
+nav .navpart2 ul li{
+  position: relative;
+}
+nav .navpart2 .subHome{
+  position: absolute;
+  visibility: hidden;
+  background: #fff;
+  width: 130%;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  left: 2px;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  padding-left:5px ;
+}
+nav .navpart2 .subHome a{
+  display: block;
+  width: 120%;
+}
+nav .navpart2 .subHome a {
+  outline: none;
+  color: rgb(0, 0, 0,0.6);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-transform: capitalize !important;
+  justify-content: flex-start;
+}
+
+nav .navpart2 ul li .subHome a button a:hover a{
+  background: #2bbef9;
+}
+nav .navpart2 ul li:hover .subHome {
+  visibility: inherit;
+  opacity: 1;
+  top: 100%;
 }
