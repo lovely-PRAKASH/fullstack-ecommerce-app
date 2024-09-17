@@ -9,6 +9,7 @@ const SearchBox = () => {
       <div className="headerSearch ml-3 mr-3">
         <input type="text" placeholder="Search for products..." />
         <Button className="searchIcon">
+{/*           search icon */}
           <IoIosSearch />
         </Button>
       </div>
