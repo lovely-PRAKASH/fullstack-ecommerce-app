@@ -106,6 +106,7 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
+{/*             navBar part2 strip */}
             <div className="col-sm-9 navpart2 d-flex align-items-center">
               <ul className="list list-inline ml-auto">
                 <li className="list-inline-item">
