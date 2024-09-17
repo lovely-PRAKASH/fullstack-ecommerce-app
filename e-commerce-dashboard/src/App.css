@@ -10,6 +10,10 @@ body {
 .bg-blue {
   background: #233a95;
 }
+.headerWrapper {
+  border-bottom: 1px solid rgb(0, 0, 0,0.1);
+  padding-bottom: 10px;
+}
 .headerWrapper .top-strip {
   padding: 8px 0px;
 }
@@ -55,7 +59,7 @@ body {
 .headerWrapper .header .part2 .countryDrop span.ml-auto svg{
   opacity: 0.7;
 }
-header .headerSearch{
+.headerSearch{
   width: 60%;
   height: 60px;
   background: #f3f4f7;
@@ -64,7 +68,7 @@ header .headerSearch{
   position: relative;
   border: 1px solid rgb(0, 0, 0,0.1);
 }
-header .headerSearch input{
+.headerSearch input{
   background-color: transparent !important;
   outline: none !important;
   width: 100%;
@@ -75,10 +79,10 @@ header .headerSearch input{
   padding: 0px 20px;
   color: rgb(0, 0, 0,0.6);
 }
-header .headerSearch input::-webkit-input-placeholder{
+.headerSearch input::-webkit-input-placeholder{
   color: rgba(0, 0, 0,0.5);
 }
-header .headerSearch Button{
+.headerSearch Button{
   outline: none;
   position: absolute;
   color: #3e445a;
@@ -90,9 +94,65 @@ header .headerSearch Button{
   height: 40px !important;
   width: 40px !important;
 }
-header .headerSearch .searchIcon{
+.headerSearch .searchIcon{
   font-size: 35px;
+  outline: none;
 }
+
+.locationModel .MuiPaper-elevation{
+  padding: 25px;
+  position: relative;
+
+}
+.locationModel .close_{
+  outline: none;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  font-size: 22px;
+  color: rgb(0, 0, 0,0.7);
+  border-radius: 60%;
+  width: 45px;
+  height: 45px;
+  min-width: 40px;
+}
+
+.locationModel .countryList{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 400px;
+}
+.locationModel.countryList li{
+  width: 100%;
+  list-style: none;
+}
+.locationModel .countryList li Button{
+  width: 100%;
+  outline: none;
+  justify-content: flex-start !important;
+  text-transform: capitalize !important;
+  color: #202324;
+  padding: 10px 20px;
+} 
+.locationModel .countryList li Button:hover{
+  background: #f1f1f1;
+}
+.locationModel .countryList li Button.active{
+  background: #ccc !important;
+}
+::-webkit-scrollbar{
+  width: 8px !important;
+  height: 8px !important;
+}
+::-webkit-scrollbar-thumb{
+  background: #ccc !important;
+}
+::-webkit-scrollbar-track{
+  background: transparent !important;
+}
+
 header .part3 .circle{
   outline: none;
   height: 50px;

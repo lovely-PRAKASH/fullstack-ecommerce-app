@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/logo/download.png";
 import { Link } from "react-router-dom";
 import CountryDrop from "../CountryDropDown/CountryDrop";
@@ -8,8 +8,12 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import Badge from "@mui/material/Badge";
 import SearchBox from "./SearchBox/SearchBox";
 import NavBar from "./Navigation/NavBar";
+import { myContext } from "../../App";
 
 function Header() {
+
+  const context=useContext(myContext);
+
   return (
     <div className="headerWrapper">
       <div className="top-strip bg-blue">
@@ -30,7 +34,9 @@ function Header() {
             </div>
 
             <div className="col-sm-10 d-flex align-items-center part2">
-              <CountryDrop />
+              {
+                context.countryList?.length!==0 && <CountryDrop />
+              }
               {/* searchbar start here */}
               <SearchBox />
               {/* searchbar ends here */}
