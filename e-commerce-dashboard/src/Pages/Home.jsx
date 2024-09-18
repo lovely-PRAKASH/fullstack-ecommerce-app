@@ -16,7 +16,7 @@ function Home() {
     <>
 {/*       carosoul banner */}
     <HomeBanner/>
-
+{/*product listing section starts here  */}
     <section className='homeProducts'>
       <div className="container">
         <div className="row">
