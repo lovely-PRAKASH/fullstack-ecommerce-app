@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+
 * {
   margin: 0px;
   padding: 0px;
 }
+
+.cursor{cursor: pointer;}
+.info .text-light{color: #9b9bb4 !important}
+.text-sml{font-size: 12px;}
+
 body {
   font-family: "Lato", "san-serif";
   font-size: 14px;
@@ -201,37 +209,82 @@ nav .container .navpart1 .sideNavbar{
   border: 1px solid rgb(0, 0, 0,0.1);
   width: 100%;
   top: 125%;
-  height: auto;
+  /* height: auto; */
   transition: all 0.2s ease-in-out;
 }
 nav .container .navpart1 .catwrapper .sideNavbar.open{
+  z-index: 100;
   visibility: inherit;
   height: auto;
   opacity: 1;
   border: 1px solid rgb(0, 0, 0,0.1);
   width: 100%;
-  top: 125%;
+  top: 123%;
+  background: white;
+  min-width: 270px;
+  /* border-radius: 10px; */
+  /* transition: all 0.3s ease-in-out; */
 }
-nav .container .navpart1 .sideNavbar ul{
+nav .container .navpart1 .catwrapper .sideNavbar ul{
 list-style: none;
 } 
-nav .container .navpart1 .sideNavbar ul li{
+nav .container .navpart1 .catwrapper .sideNavbar ul li{
+  position: static;
   width: 100%;
   padding: 5px 15px;
 }
-nav .container .navpart1 .sideNavbar ul li a{
+nav .container .navpart1 .catwrapper .sideNavbar ul li a{
   text-decoration: none;
   width: 100%;
 }
-nav .container .navpart1 .sideNavbar ul li a Button{
+nav .container .navpart1 .catwrapper .sideNavbar ul li a Button{
   width: 100%;
+  display: flex;
   outline: none;
   text-transform: capitalize;
   color: #000;
   font-weight: 500;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
+}
+nav .container .navpart1 .catwrapper .sideNavbar ul li a Button:hover{
+  color: #2bbef9;
+  background: none;
+}
+nav .navpart1 .catwrapper .sideNavbar ul li{
+  position: static;
+  padding-right: 15px;
 }
 
+nav .navpart1 .catwrapper .sideNavbar ul li .subMenu{
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  z-index: 100;
+  height: auto;
+  width: 180px;
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+}
+nav .navpart1 .catwrapper .sideNavbar ul li:hover .subMenu{
+  visibility: inherit;
+  opacity: 1;
+  transition: all 0.2s ease-in-out; 
+}
+
+nav .navpart1 .catwrapper .sideNavbar ul li .subMenu a{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: rgb(0, 0, 0,0.8);
+  padding: 5px 10px;
+  text-transform: capitalize;
+}
+nav .navpart1 .catwrapper .sideNavbar ul li .subMenu a:hover{
+  /* background: #f0faff; */
+  color: #2bbef9;
+}
 nav .allCatTab:hover{
   background: #2bbef9;
 }
@@ -268,7 +321,8 @@ nav .navpart2 ul li a:hover{
 nav .navpart2 ul li{
   position: relative;
 }
-nav .navpart2 .subHome{
+nav .navpart2 .subMenu{
+  z-index: 100;
   position: absolute;
   visibility: hidden;
   background: #fff;
@@ -280,11 +334,11 @@ nav .navpart2 .subHome{
   border-radius: 10px;
   padding-left:5px ;
 }
-nav .navpart2 .subHome a{
+nav .navpart2 .subMenu a{
   display: block;
-  width: 120%;
+  width: 100%;
 }
-nav .navpart2 .subHome a {
+nav .navpart2 .subMenu a {
   outline: none;
   color: rgb(0, 0, 0,0.6);
   font-weight: 600;
@@ -294,11 +348,70 @@ nav .navpart2 .subHome a {
   justify-content: flex-start;
 }
 
-nav .navpart2 ul li .subHome a button a:hover a{
+nav .navpart2 ul li .subMenu a button a:hover a{
   background: #2bbef9;
 }
-nav .navpart2 ul li:hover .subHome {
+nav .navpart2 ul li:hover .subMenu {
   visibility: inherit;
   opacity: 1;
   top: 100%;
+}
+
+.homeBannerSection{
+position: relative;  
+}
+.homeBannerSection .slick-arrow{
+  position: absolute;
+  top: 45%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: transparent;
+}
+.homeBannerSection .slick-arrow.slick-next{
+  left:96%;
+}
+.homeBannerSection .slick-arrow.slick-next::before{
+  font-size: 25px;
+}
+.homeBannerSection .slick-arrow.slick-prev{
+  left:1%;
+}
+.homeBannerSection .slick-arrow.slick-prev::before{
+  font-size: 25px;
+}
+
+.homeProducts{
+  padding: 25px 0px;
+  width: 100%;
+}
+.homeProducts .banner{
+  width: 100%;
+  border-radius: 7px;
+  /* overflow: hidden; */
+}
+.homeProducts .banner img{
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+  
+}
+.productRow .hd{
+  font-family: "dosis", sans-serif;
+  font-weight: 600;
+}
+.productRow .viewAllBtn{
+  outline: none;
+  text-transform: capitalize;
+  color: #9b9bb4;
+  border: 1px solid rgb(0, 0, 0,0.1);
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+.productRow .viewAllBtn svg{
+  font-size: 16px;
 }

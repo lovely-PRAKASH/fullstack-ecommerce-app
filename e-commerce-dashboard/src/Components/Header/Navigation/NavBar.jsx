@@ -3,9 +3,11 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { FaAngleDown } from "react-icons/fa";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { LiaAngleRightSolid } from "react-icons/lia";
+
 
 const NavBar = () => {
-  const [navBarToggle, setNavBarToggle] = useState(true);
+  const [navBarToggle, setNavBarToggle] = useState(false);
 
   return (
     <>
@@ -29,89 +31,94 @@ const NavBar = () => {
                   </span>
                 </Button>
                 <div
-                  className={`sideNavbar ${navBarToggle === true ? "open" : ""}`}
+                  className={`sideNavbar ${
+                    navBarToggle === true ? "open" : ""
+                  }`}
                 >
                   <ul>
                     <li>
                       <Link to="/">
-                        <Button>men</Button>
+                        <Button>fruits & vegetables <LiaAngleRightSolid className="ml auto"/>
+                        </Button>
+                      </Link>
+                      <div className="subMenu">
+                        <Link to="/">
+                          <span>cuts & sprouts</span>
+                        </Link>
+                        <Link to="/">
+                          <span>Exotic fruits & veggies</span>
+                        </Link>
+                        <Link to="/">
+                          <span>Fresh fruits</span>
+                        </Link>
+                        <Link to="/">
+                          <span>fresh vegetables</span>
+                        </Link>
+                        <Link to="/">
+                          <span>herbs & seasonings</span>
+                        </Link>
+                      </div>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        <Button>meats & seafood</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>Women</Button>
+                        <Button>breakfast & dairy</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>beauty</Button>
+                        <Button>Beverages</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>watches</Button>
+                        <Button>Breads & Bakery</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>kids</Button>
+                        <Button>frozen foods</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>gift</Button>
+                        <Button>Biscuits & snacks</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>men</Button>
+                        <Button>grocery & staples</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>men</Button>
+                        <Button>value of the day</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>Women</Button>
+                        <Button>top 100 offers</Button>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <Button>beauty</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>watches</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>kids</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>gift</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>men</Button>
+                        <Button>New arrivals</Button>
                       </Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-{/*             navBar part2 strip */}
+            {/*             navBar part2 strip */}
             <div className="col-sm-9 navpart2 d-flex align-items-center">
               <ul className="list list-inline ml-auto">
                 <li className="list-inline-item">
                   <Link to="/">Home</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>Home1</span>
                     </Link>
@@ -131,7 +138,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Shop</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>item1</span>
                     </Link>
@@ -151,7 +158,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Meats&SeaFood</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>meat1</span>
                     </Link>
@@ -171,7 +178,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Bakery</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>item1</span>
                     </Link>
@@ -191,7 +198,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Beverages</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>beverages1</span>
                     </Link>
@@ -211,7 +218,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Blog</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>post1</span>
                     </Link>
@@ -231,7 +238,7 @@ const NavBar = () => {
                 </li>
                 <li className="list-inline-item">
                   <Link to="/">Contact</Link>
-                  <div className="subHome shadow">
+                  <div className="subMenu shadow">
                     <Link to="/">
                       <span>contact us1</span>
                     </Link>
