@@ -14,6 +14,7 @@ import 'swiper/css';
 function Home() {
   return (
     <>
+{/*       carosoul banner */}
     <HomeBanner/>
 
     <section className='homeProducts'>
