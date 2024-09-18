@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import React from "react";
 
 const HomeBanner = () => {
+  // silk slider section for carosoul
   var settings = {
     dots: true,
     infinite: true,
