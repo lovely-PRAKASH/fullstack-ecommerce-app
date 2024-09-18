@@ -3,7 +3,7 @@ import HomeBanner from '../Components/homeBanner/homeBanner'
 import banner from '../../src/assets/sideBanner.jpg'
 import { Button } from "@mui/material";
 import { BsArrowRight } from "react-icons/bs";
-
+// swiper for product navigation slider
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
