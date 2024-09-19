@@ -21,6 +21,7 @@ function Home() {
       <div className="container">
         <div className="row">
           <div className="col-md-3">
+{/*             for side banner */}
             <div className="banner">
             <img src={banner} alt="side banner" className='cursor' />
             </div>
