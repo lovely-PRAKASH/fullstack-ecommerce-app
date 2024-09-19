@@ -4,16 +4,11 @@ import banner from "../../src/assets/sideBanner.jpg";
 import banner2 from "../../src/assets/Banner2.jpg";
 import { Button } from "@mui/material";
 import { BsArrowRight } from "react-icons/bs";
-<<<<<<< HEAD
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-=======
 // swiper for product navigation slider
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
->>>>>>> 3bb190bf70e2a7d49f456fefdd8cbd5270a8df3b
-
 // Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css";
@@ -22,25 +17,6 @@ import ProductCard from "../Components/productCard/ProductCard";
 function Home() {
   return (
     <>
-<<<<<<< HEAD
-      <HomeBanner />
-
-      <section className="homeProducts">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <div className="banner">
-                <img src={banner} alt="side banner" className="cursor" />
-              </div>
-              <div className="banner mt-4">
-                <img src={banner2} alt="side banner" className="cursor" />
-              </div>
-              <div className="banner">
-                <img src={banner} alt="side banner" className="cursor" />
-              </div>
-              <div className="banner mt-4">
-                <img src={banner2} alt="side banner" className="cursor" />
-=======
 {/*       carosoul banner */}
     <HomeBanner/>
 {/*product listing section starts here  */}
@@ -59,7 +35,6 @@ function Home() {
                 </h3>
                 <p className='text-light text-sml mb-0'>Do not miss the current offers until the end of March.
                 </p>
->>>>>>> 3bb190bf70e2a7d49f456fefdd8cbd5270a8df3b
               </div>
             </div>
             <div className="col-md-9 productRow">
@@ -173,8 +148,4 @@ function Home() {
   );
 }
 
-<<<<<<< HEAD
 export default Home;
-=======
-export default Home
->>>>>>> 3bb190bf70e2a7d49f456fefdd8cbd5270a8df3b
