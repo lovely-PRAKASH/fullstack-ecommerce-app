@@ -26,6 +26,7 @@ function Home() {
             <img src={banner} alt="side banner" className='cursor' />
             </div>
           </div>
+{/*           product row for product items */}
           <div className="col-md-9 productRow">
             <div className="d-flex align-items-center">
               <div className="info w-75">
