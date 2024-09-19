@@ -12,7 +12,7 @@ const HomeBanner = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-    arrows: true
+    // arrows: true
   };
   return (
     <>

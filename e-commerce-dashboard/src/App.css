@@ -403,6 +403,7 @@ position: relative;
 .productRow .hd{
   font-family: "dosis", sans-serif;
   font-weight: 600;
+  font-size: 20px;
 }
 .productRow .viewAllBtn{
   outline: none;
@@ -415,3 +416,149 @@ position: relative;
 .productRow .viewAllBtn svg{
   font-size: 16px;
 }
+
+.productItem{
+  width: 100%;
+  height: auto;
+  border:1px solid rgb(0, 0, 0,0.1);
+  cursor:pointer;
+}
+.productItem .imgWrapper{
+  position: relative;
+}
+.productItem .badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 75%;
+  font-family: "dosis";
+  padding: 3px 5px;
+  background: #2bbef9;
+}
+
+.productItem .info {
+  padding: 15px;
+}
+.productItem .info h4{
+  font-size: 14px;
+  font-weight: 600;
+}
+.productItem .info .stock{
+  font-family: "dosis";
+  font-size: 12px;
+  
+}
+.productItem .price{
+  display: flex;
+  gap:10px;
+  font-family:"dosis"
+}
+.productItem .price .oldPrice{
+  color: rgb(0, 0, 0,0.3);
+  font-weight: 700;
+  font-size: 15.5px;
+}
+.productItem .price .newPrice{
+  font-weight: 600;
+  font-size: 18px;
+}
+.productItem .imgwrapper{
+  overflow: hidden;
+}
+.productItem .imgwrapper img{
+  transition:all 0.3s ease-in-out;
+}
+.productItem .imgwrapper:hover img{
+  transform: scale(1.1);
+}
+
+.productItem .imgwrapper .actions{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  top:10px;
+  right: -100px;
+  visibility: hidden;
+  opacity: 0;
+}
+.productItem .imgwrapper:hover .actions{
+  visibility: inherit;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+.productItem .imgwrapper .actions Button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  border:1px solid rgb(0, 0, 0,0.1);
+  margin-top: 2px;
+  transition: all 0.1s ease-in-out;
+  /* background: transparent; */
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
+  /* transition:  0.3s ease-in-out; */
+
+}
+.productRow .imgwrapper{
+  overflow: hidden;
+}
+.productItem .imgwrapper:hover .actions{
+  opacity: 1;
+  right: 10px;
+}
+/* .productItem .imgwrapper .actions:hover .actions .heartBtn {
+  transition: all 0.8s ease-in-out;
+} */
+.productItem .imgwrapper .actions Button:hover {
+  background: #233a95
+}
+.productItem .imgwrapper .actions Button svg{
+  font-size: 18px;
+  color: rgb(0, 0, 0,0.5);
+}
+.productItem .imgwrapper .actions Button:hover svg{
+  color: white;
+}
+
+.mySwiper .swiper-button-next {
+  color: #000;       
+  background-color: white; 
+  padding: 10px;        
+  background: transparent;
+  border-radius: 50%;   
+  right: 0px;        
+}
+
+.mySwiper .swiper-button-prev {
+  color: #000;      
+  background-color: white; 
+  padding: 10px;        
+  background: transparent;
+  border-radius: 50%;   
+  left: 0px;          
+}
+
+.mySwiper .swiper-button-next::after, 
+.mySwiper .swiper-button-prev::after {
+  font-size: 20px; 
+}
+
+.productRow2{
+  flex-wrap: wrap;
+  align-items: center;
+}
+.productRow2 .productItem{
+  width: 25%;
+  overflow: hidden;
+}
+
+
