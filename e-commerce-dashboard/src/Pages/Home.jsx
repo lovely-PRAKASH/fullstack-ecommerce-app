@@ -24,10 +24,12 @@ function Home() {
       <div className="container">
         <div className="row">
           <div className="col-md-3">
+{/*             for side banner */}
             <div className="banner">
             <img src={banner} alt="side banner" className='cursor' />
             </div>
           </div>
+{/*           product row for product items */}
           <div className="col-md-9 productRow">
             <div className="d-flex align-items-center">
               <div className="info w-75">
