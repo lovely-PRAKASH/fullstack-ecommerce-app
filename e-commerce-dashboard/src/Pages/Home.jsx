@@ -36,7 +36,8 @@ function Home() {
               <Button className="viewAllBtn ml-auto">view All <BsArrowRight /></Button>
             </div>
             <div className="product_row w-100 mt-4 ">
-            <Swiper
+{/*             here used swiper for product items */}
+              <Swiper
         slidesPerView={4}
         spaceBetween={30}
         Pagination={{
