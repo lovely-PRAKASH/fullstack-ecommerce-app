@@ -580,11 +580,13 @@ position: relative;
   position: relative;
   min-width: 500px;
   width: 900px !important;
+  height: auto;
 }
 
 .productModel h1{
   font-weight: 600;
-  font-size: 24px;
+  font-size: 24px !important;
+  color: rgba(0, 0, 0,0.8) !important;
 }
 
 .productZoom{
@@ -593,6 +595,10 @@ position: relative;
   border: 1px solid rgba(0, 0, 0,0.1);
   padding: 0px;
   overflow: hidden !important;
+  border-radius: 15px;
+}
+.zoomSliderBig{
+  width:100% !important;
 }
 .zoomSlider{
   padding-top: 30px;
@@ -620,5 +626,5 @@ position: relative;
   right: -2% !important;
 }
 .zoomSlider .slick-arrow.slick-prev{
-  left: -2% !important;
+  left: -5% !important;
 }

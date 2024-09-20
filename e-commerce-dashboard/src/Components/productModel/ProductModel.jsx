@@ -16,9 +16,9 @@ const ProductModel = ({ closeProductModel }) => {
   const zoomSlider = useRef();
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 5,
     slidesToScroll: 1,
     fade: false,
     arrow: true,
@@ -26,12 +26,12 @@ const ProductModel = ({ closeProductModel }) => {
 
   const settings2 = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: false,
-    arrow: true,
+    arrow: false,
   };
   return (
     <>
@@ -65,15 +65,32 @@ const ProductModel = ({ closeProductModel }) => {
         <hr />
         <div className="row mt-2 productDetailModal">
           <div className="col-md-5">
-            <div className="producZoom">
+            <div className="productZoom">
               <Slider {...settings2} className="zoomSliderBig" ref={zoomSliderBig}>
                 <div className="item">
-                  <InnerImageoom zoomType="hover" zoomScale={1}
+                  <InnerImageZoom zoomType="hover" zoomScale={1}
                     src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg"
                   />
                 </div>
-              </Slider>
+              </Slider> 
             </div>
+            <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
+                <div className="item">
+                  <InnerImageZoom zoomType="hover" zoomScale={1}
+                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg" className="w-100"
+                  />
+                </div>
+                <div className="item">
+                  <InnerImageZoom zoomType="hover" zoomScale={1}
+                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg" className="w-100"
+                  />
+                </div>
+                <div className="item">
+                  <InnerImageZoom zoomType="hover" zoomScale={1}
+                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg" className="w-100"
+                  />
+                </div>
+              </Slider> 
           </div>
           <div className="col-md-7"></div>
         </div>
