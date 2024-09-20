@@ -12,7 +12,6 @@ import { GoHeart } from "react-icons/go";
 
 const ProductCard = () => {
   return (
-    <>
         <div className="productItem">
           <div className="imgwrapper">
             <img
@@ -52,7 +51,6 @@ const ProductCard = () => {
             </div>
           </div>
         </div>
-    </>
   );
 };
 

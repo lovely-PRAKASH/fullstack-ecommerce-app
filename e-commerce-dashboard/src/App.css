@@ -422,6 +422,7 @@ position: relative;
   height: auto;
   border:1px solid rgb(0, 0, 0,0.1);
   cursor:pointer;
+  position: relative;
 }
 .productItem .imgWrapper{
   position: relative;
@@ -437,6 +438,7 @@ position: relative;
   font-family: "dosis";
   padding: 3px 5px;
   background: #2bbef9;
+  z-index: 100;
 }
 
 .productItem .info {
@@ -465,6 +467,15 @@ position: relative;
   font-weight: 600;
   font-size: 18px;
 }
+.product_row .productItem{
+  border-right: 1px solid transparent !important;
+}
+.product_row .swiper-slide:last-child .productItem{
+  border:1px solid rgb(0, 0, 0,0.1)
+}
+.swiper{
+  padding-right: 1px !important;
+}
 .productItem .imgwrapper{
   overflow: hidden;
 }
@@ -475,27 +486,30 @@ position: relative;
   transform: scale(1.1);
 }
 
-.productItem .imgwrapper .actions{
+.productItem .actions{
   position: absolute;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 100;
   top:10px;
-  right: -100px;
+  right: -100%;
   visibility: hidden;
   opacity: 0;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+
 }
 .productItem .imgwrapper:hover .actions{
   visibility: inherit;
   opacity: 1;
   transition: all 0.5s ease-in-out;
 }
-.productItem .imgwrapper .actions Button{
+.productItem .actions Button{
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
+  min-width: 40px !important;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -505,10 +519,10 @@ position: relative;
   transition: all 0.1s ease-in-out;
   /* background: transparent; */
   box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
-  /* transition:  0.3s ease-in-out; */
+  transition:  0.3s ease-in-out;
 
 }
-.productRow .imgwrapper{
+.product_row .imgwrapper{
   overflow: hidden;
 }
 .productItem .imgwrapper:hover .actions{
