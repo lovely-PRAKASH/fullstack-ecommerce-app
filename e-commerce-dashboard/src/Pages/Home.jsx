@@ -4,7 +4,6 @@ import banner from "../../src/assets/sideBanner.jpg";
 import banner2 from "../../src/assets/Banner2.jpg";
 import { Button } from "@mui/material";
 import { BsArrowRight } from "react-icons/bs";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -22,7 +21,7 @@ function Home() {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <div className="banner">
+              <div className="banner mb-2">
                 <img src={banner} alt="side banner" className="cursor" />
               </div>
               <div className="banner mt-4">
@@ -96,9 +95,6 @@ function Home() {
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
-
-
-
               </div>
             </div>
           </div>

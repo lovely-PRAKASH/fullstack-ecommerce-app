@@ -113,17 +113,17 @@ body {
   position: relative;
 
 }
-.locationModel .close_{
-  outline: none;
-  position: absolute;
+.close_{
+  outline: none !important;
+  position: absolute !important;
   right: 10px;
   top: 15px;
-  font-size: 22px;
-  color: rgb(0, 0, 0,0.7);
-  border-radius: 60%;
-  width: 45px;
-  height: 45px;
-  min-width: 40px;
+  font-size: 22px !important;
+  color: rgb(0, 0, 0,0.7) !important;
+  border-radius: 60% ;
+  width: 45px !important;
+  height: 45px !important;
+  min-width: 40px !important;
 }
 
 .locationModel .countryList{
@@ -467,12 +467,12 @@ position: relative;
   font-weight: 600;
   font-size: 18px;
 }
-.product_row .productItem{
+/* .product_row .productItem{
   border-right: 1px solid transparent !important;
 }
 .product_row .swiper-slide:last-child .productItem{
   border:1px solid rgb(0, 0, 0,0.1)
-}
+} */
 .swiper{
   padding-right: 1px !important;
 }
@@ -575,4 +575,14 @@ position: relative;
   overflow: hidden;
 }
 
+.productModel .MuiPaper-elevation{
+  padding: 40px;
+  position: relative;
+  min-width: 500px;
+  width: 900px !important;
+}
 
+.productModel h1{
+  font-weight: 600;
+  font-size: 24px;
+}
