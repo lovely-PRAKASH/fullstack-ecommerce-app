@@ -9,7 +9,7 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
-
+import QuantityBox from "../quantityBox/QuantityBox";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -127,26 +127,28 @@ const ProductModel = ({ closeProductModel }) => {
           </div>
           <div className="col-md-7">
             <div className=" d-flex align-items-center">
-                <del className="oldPrice lg">
-                  <span>$9.35</span>
-                </del>
-                <span className="newPrice lg text-danger ml-2">$7.25</span>
+              <del className="oldPrice lg">
+                <span>$9.35</span>
+              </del>
+              <span className="newPrice lg text-danger ml-2">$7.25</span>
             </div>
-              <span className="badge bg-success mt-2">IN STOCK</span>
+            <span className="badge bg-success mt-2">IN STOCK</span>
             <p className="mt-2">
               Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus
               malesuada tincidunt. Class aptent taciti sociosqu ad litora
               torquent
             </p>
-            <div className="d-fle align-itmes-center">
-              <div className="quantityDrop d-flex align-itmes-center">
-                <Button><FaMinus/></Button>
-                <input type="number" />
-                <Button><FaPlus/></Button>
-              </div>
-              <Button className="btn-blue btn-lg btn-big btn-round">
+            <div className="d-flex align-items-center">
+              <QuantityBox />
+              <Button
+                className="btn-blue btn-lg btn-big btn-round ml-3"
+                style={{ outline: "none" }}
+              >
                 Add to cart
               </Button>
+            </div>
+            <div className="d-flex align-items-center">
+              <Button className="btn-round mt-3" variant="outlined">wish list</Button>
             </div>
           </div>
         </div>
