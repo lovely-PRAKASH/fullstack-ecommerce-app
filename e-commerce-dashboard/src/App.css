@@ -482,6 +482,7 @@ position: relative;
   font-weight: 600;
   font-size: 24px;
 }
+
 .btn-blue{
   background: #233a95 !important;
   color: #fff !important;
@@ -645,6 +646,9 @@ position: relative;
   border-radius: 15px;
   cursor: pointer;
 }
+.slick-slider .slick-list .slick-track::before {
+  transform: translate3d(0px, 0px, 0px) !important;
+}
 .zoomSlider .slick-current .item{
   border: 2px solid #3bb77e !important;
 }
@@ -659,3 +663,27 @@ position: relative;
   left: -5% !important;
 }
 
+.quantityDrop{
+  width: 150px;
+  gap: 10px;
+}
+.quantityDrop Button{
+  outline: none !important;
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: #edeef5 !important;
+  border: 1px solid rgba(0, 0, 0,0.1) !important;
+  color: #000;
+}
+.quantityDrop Button svg{
+  color:#000 !important;
+}
+.quantityDrop input{
+  width:30px;
+  border: 0px;
+  background: transparent;
+  outline: none;
+  text-align: center;
+}
