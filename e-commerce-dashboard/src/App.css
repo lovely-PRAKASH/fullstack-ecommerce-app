@@ -441,32 +441,61 @@ position: relative;
   z-index: 100;
 }
 
-.productItem .info {
+.info {
   padding: 15px;
 }
-.productItem .info h4{
+.info h4{
   font-size: 14px;
   font-weight: 600;
 }
-.productItem .info .stock{
+.info .stock{
   font-family: "dosis";
   font-size: 12px;
-  
 }
-.productItem .price{
+.badge{
+  display: inline-block;
+  padding: 7px 10px;
+}
+.badge.bg-success{
+  background: #e5f8ed !important;
+  color: #16b858 !important;
+}
+.price{
   display: flex;
   gap:10px;
   font-family:"dosis"
 }
-.productItem .price .oldPrice{
+.oldPrice{
   color: rgb(0, 0, 0,0.3);
   font-weight: 700;
   font-size: 15.5px;
 }
-.productItem .price .newPrice{
+.oldPrice.lg{
+  font-weight: 700;
+  font-size: 19.5px;
+}
+.newPrice{
   font-weight: 600;
   font-size: 18px;
 }
+.newPrice.lg{
+  font-weight: 600;
+  font-size: 24px;
+}
+.btn-blue{
+  background: #233a95 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+}
+.btn-big{
+  font-size: 14px !important;
+  padding: 7px 30px !important;
+  min-width: auto !important;
+}
+.btn-round{
+  border-radius: 30px !important;
+}
+
 /* .product_row .productItem{
   border-right: 1px solid transparent !important;
 }
@@ -576,10 +605,11 @@ position: relative;
 }
 
 .productModel .MuiPaper-elevation{
-  padding: 40px;
+  padding: 30px;
+  margin:20px;
   position: relative;
-  min-width: 500px;
-  width: 900px !important;
+  min-width: 800px;
+  width: 1000px !important;
   height: auto;
 }
 
@@ -604,7 +634,7 @@ position: relative;
   padding-top: 30px;
 }
 .zoomSlider .slick-slide {
-  padding-right: 20px !important;
+  padding-right: 10px !important;
 }
 .zoomSlider *{
   outline: none !important;
@@ -628,3 +658,4 @@ position: relative;
 .zoomSlider .slick-arrow.slick-prev{
   left: -5% !important;
 }
+

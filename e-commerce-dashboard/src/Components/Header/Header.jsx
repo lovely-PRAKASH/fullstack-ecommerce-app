@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import logo from "../../assets/logo/download.png";
+import logo from "../../assets/logo/logo.jpg";
 import { Link } from "react-router-dom";
 import CountryDrop from "../CountryDropDown/CountryDrop";
 import { Button } from "@mui/material";
