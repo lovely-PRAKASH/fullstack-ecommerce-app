@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './Pages/Home';
 import Header from './Components/Header/Header';
 import axios from 'axios'
+
  const myContext=createContext();
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
     <Header/>
     <Routes>
       <Route path='/' exact={true} element={<Home/>}/>
+      <Route path='/search' exact={true} element={<Home/>}/>
+
     </Routes>
     </myContext.Provider>
     </BrowserRouter>
