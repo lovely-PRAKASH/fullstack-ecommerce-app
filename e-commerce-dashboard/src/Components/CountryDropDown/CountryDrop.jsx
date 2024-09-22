@@ -85,7 +85,7 @@ const CountryDrop = () => {
           {countryList?.lenght!== 0 && countryList?.map((item, index) => {
               return (
                 <li key={index}>
-                  <Button onClick={() => handleActive(index, item.country)} className={`${selectedIndex===index ? 'active': ''}`}>{item.country}</Button>
+                  <Button onClick={() => handleActive(index, item.country)} className={`₹{selectedIndex===index ? 'active': ''}`}>{item.country}</Button>
                 </li>
               );
             })}

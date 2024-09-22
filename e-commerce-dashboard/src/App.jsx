@@ -21,7 +21,7 @@ function App() {
       console.log(res.data.data)
     })
   }
-  // console.log(`thi is country list ${countryList}`)
+  // console.log(`thi is country list ₹{countryList}`)
 
   const values={
     countryList

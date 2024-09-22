@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeBanner from "../Components/homeBanner/homeBanner";
 import banner from "../../src/assets/sideBanner.jpg";
 import banner2 from "../../src/assets/Banner2.jpg";
@@ -6,13 +6,30 @@ import { Button } from "@mui/material";
 import { BsArrowRight } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import ProductCard from "../Components/productCard/ProductCard";
 
 // Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css";
-import ProductCard from "../Components/productCard/ProductCard";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          import.meta.env.VITE_API_URL + "/products"
+        );
+        const data = await response.json();
+        setProducts(data.products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <>
       <HomeBanner />
@@ -54,24 +71,11 @@ function Home() {
                   modules={[Navigation]}
                   className="mySwiper"
                 >
+                    {products.map((product) => (
                   <SwiperSlide>
-                    <ProductCard />
+                      <ProductCard product={product} />
                   </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductCard />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductCard />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductCard />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductCard />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductCard />
-                  </SwiperSlide>
+                    ))}
                 </Swiper>
               </div>
 
@@ -87,14 +91,10 @@ function Home() {
                 </Button>
               </div>
               <div className="product_row productRow2 d-flex w-100 mt-4 ">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+                {/* pc */}
               </div>
             </div>
           </div>

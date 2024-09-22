@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import { IoMdClose } from "react-icons/io";
@@ -6,17 +6,19 @@ import Slide from "@mui/material/Slide";
 import Rating from "@mui/material/Rating";
 import Slider from "react-slick";
 import InnerImageZoom from "react-inner-image-zoom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
 import QuantityBox from "../quantityBox/QuantityBox";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-const ProductModel = ({ closeProductModel }) => {
+
+const ProductModel = ({ closeProductModel, product }) => {
   const zoomSliderBig = useRef();
   const zoomSlider = useRef();
+
   const settings = {
     dots: false,
     infinite: false,
@@ -36,124 +38,114 @@ const ProductModel = ({ closeProductModel }) => {
     fade: false,
     arrow: false,
   };
+
   const goto = (index) => {
     zoomSlider.current.slickGoTo(index);
     zoomSliderBig.current.slickGoTo(index);
   };
+
   return (
-    <>
-      <Dialog
-        open={true}
-        onClose={() => {
-          closeProductModel();
-        }}
-        className="productModel"
-        TransitionComponent={Transition}
-      >
-        <h1>All Natural Italian-Style Chicken Meatballs</h1>
-        <Button className="close_" onClick={() => closeProductModel()}>
-          <IoMdClose />
-        </Button>
-        <div className="d-flex align-items-center">
-          <div className="d-flex align-items-center mr-4">
-            <span>Brands:</span>
-            <span className="ml-2">
-              <b>welch's</b>
-            </span>
-          </div>
-          <Rating
-            name="size-small"
-            defaultValue={5}
-            size="small"
-            precision={0.5}
-            readOnly
-          />
+    <Dialog
+      open={true}
+      onClose={() => {
+        closeProductModel();
+      }}
+      className="productModel"
+      TransitionComponent={Transition}
+    >
+      <h1>{product.name}</h1>
+      <Button className="close_" onClick={() => closeProductModel()}>
+        <IoMdClose />
+      </Button>
+
+      <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center mr-4">
+          <span>Brands:</span>
+          <span className="ml-2">
+            <b>{product.seller}</b>
+          </span>
         </div>
-        <hr />
-        <div className="row mt-2 productDetailModal">
-          <div className="col-md-5">
-            <div className="productZoom">
-              <Slider
-                {...settings2}
-                className="zoomSliderBig"
-                ref={zoomSliderBig}
-              >
-                <div className="item">
-                  <InnerImageZoom
-                    // zoomType="hover"
-                    zoomScale={1}
-                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg"
-                  />
-                </div>
-                <div className="item">
-                  <InnerImageZoom
-                    zoomType="hover"
-                    zoomScale={1}
-                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg"
-                  />
-                </div>
-                <div className="item">
-                  <InnerImageZoom
-                    zoomType="hover"
-                    zoomScale={1}
-                    src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg"
-                  />
-                </div>
-              </Slider>
-            </div>
-            <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
-              <div className="item">
-                <img
-                  src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg"
-                  onClick={() => goto(0)}
-                  className="w-100"
-                />
-              </div>
-              <div className="item">
-                <img
-                  src="		https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg"
-                  onClick={() => goto(1)}
-                  className="w-100"
-                />
-              </div>
-              <div className="item">
-                <img
-                  src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg"
-                  onClick={() => goto(2)}
-                  className="w-100"
-                />
-              </div>
+        <Rating
+          name="size-small"
+          value={product.ratings}
+          size="small"
+          precision={0.5}
+          readOnly
+        />
+      </div>
+
+      <hr />
+
+      <div className="row mt-2 productDetailModal">
+        <div className="col-md-5">
+          <div className="productZoom">
+
+            {/* Main Zoom Slider */}
+            <Slider {...settings2} className="zoomSliderBig" ref={zoomSliderBig}>
+              {product.images && product.images.length > 0 ? (
+                product.images.map((img, index) => (
+                  <div className="item" key={img._id}>
+                    <InnerImageZoom
+                      zoomType="hover"
+                      zoomScale={1.5}
+                      src={img.image}
+                      alt={product.name}
+                      className="w-100"
+                    />
+                  </div>
+                ))
+              ) : (
+                <p>No images available</p>
+              )}
             </Slider>
-          </div>
-          <div className="col-md-7">
-            <div className=" d-flex align-items-center">
-              <del className="oldPrice lg">
-                <span>$9.35</span>
-              </del>
-              <span className="newPrice lg text-danger ml-2">$7.25</span>
-            </div>
-            <span className="badge bg-success mt-2">IN STOCK</span>
-            <p className="mt-2">
-              Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus
-              malesuada tincidunt. Class aptent taciti sociosqu ad litora
-              torquent
-            </p>
-            <div className="d-flex align-items-center">
-              <QuantityBox />
-              <Button
-                className="btn-blue btn-lg btn-big btn-round ml-3"
-                style={{ outline: "none" }}
-              >
-                Add to cart
-              </Button>
-            </div>
-            <div className="d-flex align-items-center">
-              <Button className="btn-round mt-3" variant="outlined">wish list</Button>
-            </div>
+
+            {/* Thumbnail Slider */}
+            <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
+              {product.images && product.images.length > 0 ? (
+                product.images.map((img, index) => (
+                  <div className="item" key={img._id}>
+                    <img
+                      src={img.image}
+                      onClick={() => goto(index)}
+                      className="w-100"
+                      alt={`Thumbnail of ${product.name}`}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p>No thumbnails available</p>
+              )}
+            </Slider>
+
           </div>
         </div>
-      </Dialog>
-    </>
+
+        <div className="col-md-7">
+          <div className=" d-flex align-items-center">
+            <del className="oldPrice lg">
+              <span>₹ {Number(product.price * 2).toFixed(2)}</span>
+            </del>
+            <span className="newPrice lg text-danger ml-2">₹ {product.price}</span>
+          </div>
+          <span className="badge bg-success mt-2">IN STOCK {product.stock}</span>
+          <p className="mt-2">{product.description}</p>
+          <div className="d-flex align-items-center">
+            <QuantityBox />
+            <Button
+              className="btn-blue btn-lg btn-big btn-round ml-3"
+              style={{ outline: "none" }}
+            >
+              Add to cart
+            </Button>
+          </div>
+          <div className="d-flex align-items-center">
+            <Button className="btn-round mt-3" variant="outlined">
+              wish list
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Dialog>
   );
 };
 
