@@ -11,7 +11,7 @@ import { AiOutlineFullscreen } from "react-icons/ai";
 import { GoHeart } from "react-icons/go";
 import ProductModel from "../productModel/ProductModel";
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
   const [isopenProductModel, setIsOpenProductModel]=useState(false);
 
   const viewProductDetial = (id) => {
@@ -25,11 +25,8 @@ const ProductCard = () => {
     <>
       <div className="productItem">
         <div className="imgwrapper">
-          <img
-            src="	https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62-346x310.jpg"
-            alt=""
-            className="w-100"
-          />
+        <img src={product?.images?.[0].image || 'default-image.jpg'} alt="Product" />
+
           <span className="badge badge-primary ">20%</span>
           {/* <span className="badge badge-primary ">Recommended</span> */}
 
@@ -43,25 +40,25 @@ const ProductCard = () => {
           </div>
         </div>
         <div className="info">
-          <h4>All Natural Italian-Style Chicken Meatballs</h4>
-          <span className="stock text-success d-block mt-2 mb-2">IN STOCK</span>
+          <h4>{product?.name}</h4>
+          <span className="stock text-success d-block mt-2 mb-2">IN STOCK {product.stock}</span>
           <Rating
             name="size-small"
-            defaultValue={5}
+            value={product.ratings}
             size="small"
             precision={0.5}
             readOnly
           />
           <div className="price">
             <del className="oldPrice">
-              <span>$9.35</span>
+              <span>₹{Number(product.price * 2).toFixed(2)} </span>
             </del>
-            <span className="newPrice text-danger">$7.25</span>
+            <span className="newPrice text-danger">₹ {product.price} </span>
           </div>
         </div>
       </div>
 
-      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel}/>}
+      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel} product={product}/>}
     </>
   );
 };

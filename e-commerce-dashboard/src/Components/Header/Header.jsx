@@ -45,7 +45,7 @@ function Header() {
                   <FaRegUser />
                 </Button>
                 <div className="cartTab ml-auto  d-flex align-items-center">
-                  <span className="price">$1.22</span>
+                  <span className="price">₹1.22</span>
                   <div className="position-relative ml-2">
                     <Button className="cartIcon ml-2">
                       <Badge badgeContent={1} color="error">
