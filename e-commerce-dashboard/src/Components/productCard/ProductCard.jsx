@@ -14,6 +14,7 @@ import ProductModel from "../productModel/ProductModel";
 const ProductCard = ({product}) => {
   const [isopenProductModel, setIsOpenProductModel]=useState(false);
 
+  const dollerToRupees=61.06;
   const viewProductDetial = (id) => {
     setIsOpenProductModel(true);
   };
@@ -41,7 +42,7 @@ const ProductCard = ({product}) => {
         </div>
         <div className="info">
           <h4>{product?.name}</h4>
-          <span className="stock text-success d-block mt-2 mb-2">IN STOCK {product.stock}</span>
+          <span className={`stock d-block mt-2 mb-2 ${product.stock >0? 'text-success':'text-danger'}`}> {product.stock >0 ?'IN STOCK ': `OUT OF STOCK`} </span>
           <Rating
             name="size-small"
             value={product.ratings}
@@ -51,14 +52,14 @@ const ProductCard = ({product}) => {
           />
           <div className="price">
             <del className="oldPrice">
-              <span>₹{Number(product.price * 2).toFixed(2)} </span>
+              <span>₹{Number((product.price * dollerToRupees) * 2).toFixed(2)} </span>
             </del>
-            <span className="newPrice text-danger">₹ {product.price} </span>
+            <span className="newPrice text-danger">₹ {Number(product.price * dollerToRupees).toFixed(2)} </span>
           </div>
         </div>
       </div>
 
-      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel} product={product}/>}
+      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel} product={product} dollerToRupees={dollerToRupees}/>}
     </>
   );
 };
