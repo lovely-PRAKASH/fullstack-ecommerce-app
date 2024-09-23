@@ -7,19 +7,19 @@ import { BsArrowRight } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ProductCard from "../Components/productCard/ProductCard";
-
-// Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css";
+import { useSearchParams } from "react-router-dom";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [searchParms, setSearchParms]=useSearchParams()
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          import.meta.env.VITE_API_URL + "/products"
+          import.meta.env.VITE_API_URL + "/products?"+ searchParms
         );
         const data = await response.json();
         setProducts(data.products);
@@ -29,7 +29,7 @@ function Home() {
     };
 
     fetchProducts();
-  }, []);
+  }, [searchParms]);
   return (
     <>
       <HomeBanner />
@@ -41,7 +41,7 @@ function Home() {
               <div className="banner mb-2">
                 <img src={banner} alt="side banner" className="cursor" />
               </div>
-              <div className="banner mt-4">
+              <div className="banner mt-4 mb-3">
                 <img src={banner2} alt="side banner" className="cursor" />
               </div>
               <div className="banner">

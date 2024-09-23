@@ -3,18 +3,21 @@ import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import Button from "@mui/material/Button";
 
-const QuantityBox = () => {
+const QuantityBox = ({sendDataToParent}) => {
   const [inputVal, setInputVal] = useState(1);
-
   const minus = () => {
-    if(inputVal!==1 && inputVal>0){
-        setInputVal((i) => i - 1);
+    if(inputVal>1){
+      setInputVal((i) => i - 1);
     }
   };
-
+  
   const plus = () => {
+    if(product.stock==inputVal){
+      return;
+    }
     setInputVal((i) => i + 1);
   };
+  sendDataToParent(inputVal);
   return (
     <>
       <div className="quantityDrop d-flex align-items-center">
