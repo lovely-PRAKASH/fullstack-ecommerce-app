@@ -449,14 +449,23 @@ position: relative;
   font-weight: 600;
 }
 .info .stock{
+  display: inline-block;
   font-family: "dosis";
   font-size: 12px;
+  font-weight: 600;
+}
+.stock{                                     /* for product model */
+  display: inline-block;
+  font-family: "dosis";
+  font-size: 12px;
+  font-weight: 600;
 }
 .badge{
   display: inline-block;
   padding: 7px 10px;
 }
-.badge.bg-success{
+
+.stock.bg-success{
   background: #e5f8ed !important;
   color: #16b858 !important;
 }
@@ -691,4 +700,18 @@ position: relative;
   background: transparent;
   outline: none;
   text-align: center;
+}
+/* cart style */
+
+.container {
+  margin-top: 20px;
+}
+
+.progress {
+  height: 20px;
+  font-size: 14px;
+}
+
+button.ml-2 {
+  margin-left: 10px;
 }
