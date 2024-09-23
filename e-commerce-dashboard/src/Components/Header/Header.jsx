@@ -10,7 +10,7 @@ import SearchBox from "./SearchBox/SearchBox";
 import NavBar from "./Navigation/NavBar";
 import { myContext } from "../../App";
 
-function Header() {
+function Header({cartItems}) {
 
   const context=useContext(myContext);
 
@@ -48,9 +48,11 @@ function Header() {
                   <span className="price">₹1.22</span>
                   <div className="position-relative ml-2">
                     <Button className="cartIcon ml-2">
-                      <Badge badgeContent={1} color="error">
+                      <Link to={'/cart'}>
+                      <Badge badgeContent={cartItems.length} color="error">
                         <LiaShoppingBagSolid />
                       </Badge>
+                      </Link>
                     </Button>
                   </div>
                 </div>
