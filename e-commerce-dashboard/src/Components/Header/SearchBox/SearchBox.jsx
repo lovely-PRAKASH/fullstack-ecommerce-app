@@ -14,7 +14,7 @@ const SearchBox = () => {
   return (
     <>
       <div className="headerSearch ml-3 mr-3">
-        <input type="text" placeholder="Search for products..." onChange={(e)=>setKeyWord(e.target.value)}/>
+        <input type="text" placeholder="Search for products..." onBlur={searchHandler} onChange={(e)=>setKeyWord(e.target.value)}/>
         <Button className="searchIcon" onClick={searchHandler}>
 {/*           search icon */}
           <IoIosSearch />
