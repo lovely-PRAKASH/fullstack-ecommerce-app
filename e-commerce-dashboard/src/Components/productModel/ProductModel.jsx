@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
+const ProductModel = ({ closeProductModel, product}) => {
   const zoomSliderBig = useRef();
   const zoomSlider = useRef();
   const context = useContext(myContext);
@@ -50,15 +50,16 @@ const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
     zoomSliderBig.current.slickGoTo(index);
   };
 
-  const [inputVal, setInputVal] = useState(1);
+  const [qty, setqty] = useState(1);
+
   const minus = () => {
-    if (inputVal > 1) {
-      setInputVal((i) => i - 1);
+    if (qty > 1) {
+      setqty((i) => i - 1);
     }
   };
 
   const plus = () => {
-    if (product.stock == inputVal) {
+    if (product.stock == qty) {
       return       toast.error('You reached the maximum stock limit', {
         position: "top-center",
         autoClose: 2000,
@@ -71,7 +72,7 @@ const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
         transition: Bounce,
       });;
     }
-    setInputVal((i) => i + 1);
+    setqty((i) => i + 1);
   };
 
   function addToCart() {
@@ -80,7 +81,7 @@ const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
     );
 
     if (!itemExist) {
-      const newItem = { product,inputVal};
+      const newItem = { product,qty};
       context.setCartItems((state) => [...state, newItem]);
       toast.success(`${product.name} is successfully added to cart`, {
         position: "top-center",
@@ -190,11 +191,11 @@ const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
           <div className=" d-flex align-items-center">
             <del className="oldPrice lg">
               <span>
-                ₹ {Number(product.price * dollerToRupees * 2).toFixed(2)}{" "}
+                ₹ {Number(product.price * context.dollerToRupees * 2).toFixed(2)}{" "}
               </span>
             </del>
             <span className="newPrice lg text-danger ml-2">
-              ₹ {Number(product.price * dollerToRupees).toFixed(2)}
+              ₹ {Number(product.price * context.dollerToRupees).toFixed(2)}
             </span>
           </div>
           <span
@@ -212,7 +213,7 @@ const ProductModel = ({ closeProductModel, product, dollerToRupees }) => {
               <Button style={{ outline: "none" }} onClick={minus}>
                 <FaMinus />
               </Button>
-              <input type="text" value={inputVal} />
+              <input type="text" value={qty} />
               <Button style={{ outline: "none" }} onClick={plus}>
                 <FaPlus />
               </Button>

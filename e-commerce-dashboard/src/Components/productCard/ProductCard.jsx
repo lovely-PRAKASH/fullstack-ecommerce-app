@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Rating from "@mui/material/Rating";
 
 import { SwiperSlide } from "swiper/react";
@@ -10,11 +10,12 @@ import { Button } from "@mui/material";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { GoHeart } from "react-icons/go";
 import ProductModel from "../productModel/ProductModel";
+import { myContext } from "../../App";
 
 const ProductCard = ({product}) => {
   const [isopenProductModel, setIsOpenProductModel]=useState(false);
 
-  const dollerToRupees=61.06;
+  const context=useContext(myContext);
   const viewProductDetial = (id) => {
     setIsOpenProductModel(true);
   };
@@ -52,14 +53,14 @@ const ProductCard = ({product}) => {
           />
           <div className="price">
             <del className="oldPrice">
-              <span>₹{Number((product.price * dollerToRupees) * 2).toFixed(2)} </span>
+              <span>₹{Number((product.price * context.dollerToRupees) * 2).toFixed(2)} </span>
             </del>
-            <span className="newPrice text-danger">₹ {Number(product.price * dollerToRupees).toFixed(2)} </span>
+            <span className="newPrice text-danger">₹ {Number(product.price * context.dollerToRupees).toFixed(2)} </span>
           </div>
         </div>
       </div>
 
-      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel} product={product} dollerToRupees={dollerToRupees}/>}
+      { isopenProductModel === true && <ProductModel closeProductModel={closeProductModel} product={product} />}
     </>
   );
 };

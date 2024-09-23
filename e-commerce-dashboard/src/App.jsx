@@ -14,6 +14,7 @@ const myContext = createContext();
 function App() {
   const [countryList, setCountryList] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const dollerToRupees=61.06;
 
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries");
@@ -31,6 +32,7 @@ function App() {
     countryList,
     cartItems,
     setCartItems,
+    dollerToRupees
   };
 
   return (
@@ -42,7 +44,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/search" exact={true} element={<Home />} />
-          <Route path="/cart" exact={true} element={<Cart />} cartItems={cartItems} setCartItems={setCartItems}/>
+          <Route path="/cart" exact={true} element={<Cart  cartItems={cartItems} setCartItems={setCartItems} />}/>
 
         </Routes>
       </myContext.Provider>

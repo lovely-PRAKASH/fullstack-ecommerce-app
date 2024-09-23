@@ -715,3 +715,7 @@ position: relative;
 button.ml-2 {
   margin-left: 10px;
 }
+
+img.mr-2 {
+  width:100%;
+}
