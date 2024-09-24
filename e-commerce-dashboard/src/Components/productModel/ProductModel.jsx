@@ -219,8 +219,9 @@ const ProductModel = ({ closeProductModel, product}) => {
               </Button>
             </div>
 
-            <Button disabled={product.stock==0}
-              className="btn-blue btn-lg btn-big btn-round ml-3  "
+            <Button variant="contained"
+             disabled={product.stock==0}
+              className=" "
               style={{ outline: "none" }}
               onClick={addToCart}
             >
