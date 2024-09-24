@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import Rating from "@mui/material/Rating";
-
 import { SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css";
@@ -33,8 +31,8 @@ const ProductCard = ({product}) => {
           {/* <span className="badge badge-primary ">Recommended</span> */}
 
           <div className="actions">
-            <Button>
-              <AiOutlineFullscreen onClick={() => viewProductDetial(1)} />
+            <Button onClick={() => viewProductDetial(1)}>
+              <AiOutlineFullscreen  />
             </Button>
             <Button className="heartBtn">
               <GoHeart />
@@ -42,7 +40,7 @@ const ProductCard = ({product}) => {
           </div>
         </div>
         <div className="info">
-          <h4>{product?.name}</h4>
+          <h4>{product.name}</h4>
           <span className={`stock d-block mt-2 mb-2 ${product.stock >0? 'text-success':'text-danger'}`}> {product.stock >0 ?'IN STOCK ': `OUT OF STOCK`} </span>
           <Rating
             name="size-small"
