@@ -14,6 +14,8 @@
 body {
   font-family: "Lato", "san-serif";
   font-size: 14px;
+  /* background-image:url("./assets/background.jpg");
+  background-repeat: no-repeat; */
 }
 .bg-blue {
   background: #233a95;
@@ -29,7 +31,32 @@ body {
   color: #ffff;
   font-size: 16px;
   font-weight: 500;
+  justify-content:center;
+  align-items: center;
 }
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%); /* Start off the right edge */
+  }
+  100% {
+    transform: translateX(-100%); /* End off the left edge */
+  }
+}
+
+.headerWrapper .scrolling-text{
+  display: inline-block;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: scroll-text 10s linear infinite;
+}
+.headerWrapper .scrolling-container{
+  overflow: hidden;
+  margin-top: 5px; 
+}
+
+
 .headerWrapper .header{
   width: 100%;
   height: auto;
@@ -728,4 +755,58 @@ img.mr-2 {
 .orderCart{
   justify-content: center;
   align-items: center;
+}
+
+.signup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup Button{
+  text-transform: capitalize;
+  /* background-color: #0069d9;
+  color: #ffff; */
+}
+.signup Link {
+  text-decoration: none;
+  width: 100%;
+}
+.signupPage{
+  top:100%;
+  width:fit-content;
+  background: #ffff;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  border:1px solid rgb(0, 0, 0,0.3)
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.login Button{
+  text-transform: capitalize;
+  /* background-color: #0069d9;
+  color: #ffff; */
+}
+
+.loginPage{
+  top:100%;
+  width:fit-content;
+  height: auto;
+  background:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  border:1px solid rgb(0, 0, 0,0.3)
 }
