@@ -202,6 +202,11 @@ header .part3 .circle{
 header .part3 .circle .svg{
   font-size: 22px;
 }
+header .part3 .menu menuItem{
+  /* position: relative;
+  top:0px; */
+
+}
 header .cartTab .cartIcon{
   height: 50px;
   width: 50px;
@@ -497,7 +502,7 @@ position: relative;
   color: #16b858 !important;
 }
 .price{
-  display: flex;
+  display: inline;
   gap:10px;
   font-family:"dosis"
 }
@@ -513,6 +518,7 @@ position: relative;
 .newPrice{
   font-weight: 600;
   font-size: 18px;
+  text-wrap: wrap;
 }
 .newPrice.lg{
   font-weight: 600;
@@ -809,4 +815,44 @@ img.mr-2 {
   padding: 5px;
   border-radius: 10px;
   border:1px solid rgb(0, 0, 0,0.3)
+}
+
+
+
+
+@media (max-width: 768px) {
+  .homeProducts .info {
+    text-align: center;
+  }
+  .homeProducts .viewAllBtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .headerWrapper {
+    padding: 10px 0;
+  }
+
+  .header .logoWrapper {
+    text-align: center;
+  }
+
+  .header .price {
+    font-size: 14px;
+  }
+
+  .cartIcon {
+    padding: 0;
+  }
+
+  .circle {
+    padding: 8px;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+  .headerprice {
+    display: none;
+  }
 }
