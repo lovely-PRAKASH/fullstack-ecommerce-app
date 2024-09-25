@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import HomeBanner from "../Components/homeBanner/homeBanner";
 import banner from "../../src/assets/sideBanner.jpg";
 import banner2 from "../../src/assets/Banner2.jpg";
+import banner3 from "../../src/assets/Banner3.jpg";
+import banner4 from "../../src/assets/Banner4.jpg";
+
 import { Button } from "@mui/material";
 import { BsArrowRight } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,13 +16,13 @@ import { useSearchParams } from "react-router-dom";
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const [searchParms, setSearchParms]=useSearchParams()
+  const [searchParms, setSearchParms] = useSearchParams();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          import.meta.env.VITE_API_URL + "/products?"+ searchParms
+          import.meta.env.VITE_API_URL + "/products?" + searchParms
         );
         const data = await response.json();
         setProducts(data.products);
@@ -45,10 +48,10 @@ function Home() {
                 <img src={banner2} alt="side banner" className="cursor" />
               </div>
               <div className="banner">
-                <img src={banner} alt="side banner" className="cursor" />
+                <img src={banner3} alt="side banner" className="cursor" />
               </div>
               <div className="banner mt-4">
-                <img src={banner2} alt="side banner" className="cursor" />
+                <img src={banner4} alt="side banner" className="cursor" />
               </div>
             </div>
             <div className="col-md-9 productRow">
@@ -71,11 +74,11 @@ function Home() {
                   modules={[Navigation]}
                   className="mySwiper"
                 >
-                    {products.map((product) => (
-                  <SwiperSlide>
+                  {products.map((product) => (
+                    <SwiperSlide>
                       <ProductCard product={product} />
-                  </SwiperSlide>
-                    ))}
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
               </div>
 
