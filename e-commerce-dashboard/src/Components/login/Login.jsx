@@ -29,6 +29,7 @@ const Login = () => {
       .post(import.meta.env.VITE_API_URL + "/login", credentials)
       .then((res) => {
         if (res.data.success) {
+          localStorage.setItem('isLoggedIn', true);
           console.log("Login successful");
           navigate("/");
           // Optionally store token or user details in localStorage
