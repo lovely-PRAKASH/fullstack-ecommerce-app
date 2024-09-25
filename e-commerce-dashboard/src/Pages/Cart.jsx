@@ -6,18 +6,23 @@ import { toast, Bounce } from "react-toastify";
 
 const Cart = ({ cartItems, setCartItems }) => {
   const context = useContext(myContext);
-  const [complete, setComplete] = useState();
-  // Subtotal and total calculations
+  const [complete, setComplete] = useState(false);
+
+  // Subtotal: Total quantity of items
   const [subtotal, setSubtotal] = useState(0);
 
-  // Calculate subtotal when cartItems change
+  // Total: Total amount (price * quantity)
+  const [total, setTotal] = useState(0);
+
+  // Calculate subtotal and total when cartItems change
   useEffect(() => {
-    const newSubtotal = cartItems.reduce(
-      (acc, item) =>
-        acc + item.product.price * item.qty * context.dollerToRupees,
+    const newSubtotal = cartItems.reduce((acc, item) => acc + item.qty, 0); // Total quantity
+    const newTotal = cartItems.reduce(
+      (acc, item) => acc + item.product.price * item.qty * context.dollerToRupees,
       0
-    );
+    ); // Total price
     setSubtotal(newSubtotal);
+    setTotal(newTotal);
   }, [cartItems, context.dollerToRupees]);
 
   // Update quantity - minus
@@ -68,15 +73,25 @@ const Cart = ({ cartItems, setCartItems }) => {
     setCartItems([]);
   };
 
+  // Place order handler
   async function placeOrderHandler() {
     await fetch(import.meta.env.VITE_API_URL + "/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(cartItems),
     }).then(() => {
-      setCartItems([]), setComplete(true);
+      setCartItems([]);
+      setComplete(true);
+      toast.success("Your order has been placed", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        theme: "colored",
+        transition: Bounce,
+      });
     });
   }
+
   return cartItems.length > 0 ? (
     <div className="container mt-4">
       <div className="row">
@@ -153,13 +168,13 @@ const Cart = ({ cartItems, setCartItems }) => {
           <div className="border p-3">
             <h4>Order Summary</h4>
             <div className="d-flex justify-content-between">
-              <span>Subtotal</span>
-              <span>₹{subtotal.toFixed(2)}</span>
+              <span>Subtotal (Total Quantity)</span>
+              <span><strong>{subtotal}</strong> units</span>
             </div>
             <hr />
             <div className="d-flex justify-content-between">
-              <span>Total</span>
-              <span>₹{subtotal.toFixed(2)}</span>
+              <span>Total (Order Amount)</span>
+              <span>₹ <strong>{total.toFixed(2)}</strong></span>
             </div>
             <hr />
             <Button className="btn btn-success btn-block" onClick={placeOrderHandler}>
@@ -171,14 +186,15 @@ const Cart = ({ cartItems, setCartItems }) => {
     </div>
   ) : !complete ? (
     <div className="container mt-4">
-      <div className="row">
-        <h4>Your cart is Empty</h4>
+      <div className="emptyCart row d-flex">
+        <h4 className="emptyh4">Your cart is Empty</h4>
       </div>
     </div>
   ) : (
     <div className="container mt-4">
-      <div className="row d-flex">
-        <h4 >Your Order is Placed Successfully</h4> ;
+      <div className="orderCart row d-flex">
+        <h4 className="orderh4 justify-content-center">Your Order is Placed Successfully</h4> <br/> <br/>
+        <p>Your Order has been Placed successfully!</p>
       </div>
     </div>
   );

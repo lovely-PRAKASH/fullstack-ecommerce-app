@@ -8,6 +8,8 @@ import axios from "axios";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Pages/Cart";
+import Signup from "./Components/signup/Signup";
+import Login from "./Components/login/Login";
 
 const myContext = createContext();
 
@@ -42,6 +44,8 @@ function App() {
 
         <Header cartItems={cartItems} />
         <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/search" exact={true} element={<Home />} />
           <Route path="/cart" exact={true} element={<Cart  cartItems={cartItems} setCartItems={setCartItems} />}/>

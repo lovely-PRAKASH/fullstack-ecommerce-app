@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import logo from "../../assets/logo/logo.jpg";
+import logo from "../../assets/logo/logo.png";
 import { Link } from "react-router-dom";
 import CountryDrop from "../CountryDropDown/CountryDrop";
 import { Button } from "@mui/material";
@@ -13,6 +13,10 @@ import { myContext } from "../../App";
 function Header({cartItems}) {
 
   const context=useContext(myContext);
+  const totalAmount = cartItems.reduce(
+    (acc, item) => acc + item.product.price * item.qty * context.dollerToRupees,
+    0
+  );
 
   return (
     <div className="headerWrapper">
@@ -45,7 +49,7 @@ function Header({cartItems}) {
                   <FaRegUser />
                 </Button>
                 <div className="cartTab ml-auto  d-flex align-items-center">
-                  <span className="price">₹{cartItems.subtotal?.toFixed(2)}</span>
+                  <span className="price">₹{totalAmount.toFixed(2)}</span>
                   <div className="position-relative ml-2">
                     <Button className="cartIcon ml-2">
                       <Link to={'/cart'}>
