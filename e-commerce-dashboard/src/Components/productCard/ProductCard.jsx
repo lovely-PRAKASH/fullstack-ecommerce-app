@@ -40,7 +40,7 @@ const ProductCard = ({product}) => {
           </div>
         </div>
         <div className="info">
-          <h4>{product.name}</h4>
+          <h4>{product.name.length >20?product.name.substr(0,20)+"...":product.name}</h4>
           <span className={`stock d-block mt-2 mb-2 ${product.stock >0? 'text-success':'text-danger'}`}> {product.stock >0 ?'IN STOCK ': `OUT OF STOCK`} </span>
           <Rating
             name="size-small"
