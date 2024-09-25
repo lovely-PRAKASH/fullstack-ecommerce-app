@@ -228,11 +228,11 @@ const ProductModel = ({ closeProductModel, product}) => {
               Add to cart
             </Button>
           </div>
-          <div className="d-flex align-items-center">
+          {/* <div className="d-flex align-items-center">
             <Button className="btn-round mt-3" variant="outlined">
               wish list
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </Dialog>
