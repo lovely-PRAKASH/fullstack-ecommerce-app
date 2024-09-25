@@ -104,7 +104,7 @@ const ProductCard = ({ product }) => {
                 )}
               </span>
             </del>
-            <span className="newPrice text-danger">
+            <span className="newPrice text-danger ml-2">
               ₹ {Number(product.price * dollerToRupees).toFixed(2)}
             </span>
           </div>
