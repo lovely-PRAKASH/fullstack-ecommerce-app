@@ -15,16 +15,22 @@ const myContext = createContext();
 
 function App() {
   const [isRegistered, setIsRegistered] = useState(false); // Registration state
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Registration state
   const [countryList, setCountryList] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const dollerToRupees = 61.06;
-
   const location = useLocation();
 
   useEffect(() => {
     // This could be a real check for a token, cookie, or localStorage value
     const userRegistered = localStorage.getItem("isRegistered");
     setIsRegistered(!!userRegistered);
+    const userLoggedIn = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(!!userLoggedIn)
+    
+  });
+
+  useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries");
   }, []);
 
@@ -45,10 +51,12 @@ function App() {
   const showHeader = location.pathname !== "/login" && location.pathname !== "/signup";
 
   // If the user is not registered, redirect to the signup page
-  if (!isRegistered && location.pathname !== "/signup") {
-    return <Navigate to="/signup" />;
+  if (!isRegistered && location.pathname !== "/signup" && location.pathname !== "/login") {
+    return  <Navigate to="/signup" />;
   }
-
+  if (!isLoggedIn && location.pathname !== "/login" && location.pathname !== "/signup" )  {
+    <Navigate to="/login" />;
+  }
   return (
     <myContext.Provider value={values}>
       <ToastContainer />
