@@ -21,10 +21,10 @@ function Header({cartItems}) {
   return (
     <div className="headerWrapper">
       <div className="top-strip bg-blue">
-        <div className="container">
-          <p className="mb-0 mt-0 text-center">
-            Due to the <strong>COVID 19</strong> epidemic, orders may be
-            processed with a slight delay
+        <div className="container scrolling-container">
+          <p className="mb-0 mt-0 text-center scrolling-text">
+           New Customers: Use Code WELCOME10 for 10% Off! |
+           Low Stock Alert: Grab Your Favorites Before They're Gone!
           </p>
         </div>
       </div>
@@ -66,7 +66,7 @@ function Header({cartItems}) {
         </div>
       </header>
       {/* nav bar starts here */}
-      <NavBar />
+      {/* <NavBar /> */}
       {/* nav bar ends here */}
     </div>
   );
