@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import { myContext } from "../App";
 import { toast, Bounce } from "react-toastify";
+import { loadStripe } from '@stripe/stripe-js';
 
 const Cart = ({ cartItems, setCartItems }) => {
   const context = useContext(myContext);
@@ -73,24 +74,77 @@ const Cart = ({ cartItems, setCartItems }) => {
     setCartItems([]);
   };
 
-  // Place order handler
-  async function placeOrderHandler() {
-    await fetch(import.meta.env.VITE_API_URL + "/order", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(cartItems),
-    }).then(() => {
-      setCartItems([]);
-      setComplete(true);
-      toast.success("Your order has been placed", {
+  // Razorpay payment handler
+  const handlePaymentSuccess = (response) => {
+    toast.success("Payment successful!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      theme: "colored",
+      transition: Bounce,
+    });
+    setComplete(true);
+    setCartItems([]); // Clear cart
+  };
+
+  const handlePaymentError = (error) => {
+    toast.error("Payment failed. Please try again.", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
+  const placeOrderHandler = async () => {
+    try {
+      // Call backend to create order
+      const orderResponse = await fetch(import.meta.env.VITE_API_URL + "/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: total, items: cartItems }),
+      });
+      
+      const orderData = await orderResponse.json();
+
+      // Razorpay options
+      const options = {
+        key: import.meta.env.REACT_APP_RAZORPAY_KEY_ID, 
+        key_secret:import.meta.env.REACT_APP_RAZORPAY_SECRET_KEY_ID,
+        amount: orderData.amount, // Amount in paise (multiply by 100)
+        currency: "INR",
+        name: "GOCart pvt.Ltd",
+        description: "Purchase Description",
+        order_id: orderData.order_id, // Razorpay order ID from the backend
+        handler: function (response) {
+          handlePaymentSuccess(response); // Handle payment success
+        },
+        prefill: {
+          name: "prakash",
+          email: "prakash@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.on("payment.failed", function (response) {
+        handlePaymentError(response.error); // Handle payment failure
+      });
+      rzp.open();
+    } catch (error) {
+      toast.error("Error placing the order. Try again later.", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: true,
         theme: "colored",
         transition: Bounce,
       });
-    });
-  }
+    }
+  };
 
   return cartItems.length > 0 ? (
     <div className="container mt-4">
@@ -193,7 +247,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   ) : (
     <div className="container mt-4">
       <div className="orderCart row d-flex">
-        <h4 className="orderh4 justify-content-center">Your Order is Placed Successfully</h4> <br/> <br/>
+        <h4 className="orderh4 justify-content-center">Your Order is Placed Successfully</h4> <br /> <br />
         <p>Your Order has been Placed successfully!</p>
       </div>
     </div>
