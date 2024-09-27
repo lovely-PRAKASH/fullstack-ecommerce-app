@@ -1,5 +1,5 @@
-import Razorpay from 'razorpay';
-import crypto from 'crypto';
+const Razorpay =require( 'razorpay');
+const crypto = require ( 'crypto');
 
 // Create Razorpay instance
 const razorpayInstance = new Razorpay({
