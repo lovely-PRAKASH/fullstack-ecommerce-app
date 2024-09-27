@@ -31,7 +31,7 @@ const NavBar = () => {
                   </span>
                 </Button>
                 <div
-                  className={`sideNavbar ₹{
+                  className={`sideNavbar ${
                     navBarToggle === true ? "open" : ""
                   }`}
                 >
