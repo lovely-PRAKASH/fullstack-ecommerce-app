@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import { myContext } from "../App";
 import { toast, Bounce } from "react-toastify";
-import { loadStripe } from '@stripe/stripe-js';
 
 const Cart = ({ cartItems, setCartItems }) => {
   const context = useContext(myContext);
@@ -46,7 +45,8 @@ const Cart = ({ cartItems, setCartItems }) => {
 
   // Update quantity - plus
   const plus = (item) => {
-    if (item.qty >= item.product.qty) {
+    // Prevent quantity from exceeding stock
+    if (item.qty >= item.product.stock) {
       return toast.error("Maximum stock limit reached", {
         position: "top-center",
         autoClose: 2000,
