@@ -486,6 +486,11 @@ position: relative;
   font-size: 12px;
   font-weight: 600;
 }
+.info .moreDetails p{
+  color:rgba(0, 0, 0,0.5);
+  font-size: 13px;
+  font-family: "lato";
+}
 .stock{                                     /* for product model */
   display: inline-block;
   font-family: "dosis";

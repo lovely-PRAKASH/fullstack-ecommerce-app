@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
 import { FaAngleDown } from "react-icons/fa";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { LiaAngleRightSolid } from "react-icons/lia";
 
-
 const NavBar = () => {
   const [navBarToggle, setNavBarToggle] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          import.meta.env.VITE_API_URL + "/products"
+        );
+        const data = await response.json();
+        setProducts(data.products);
+        const uniqueCategory = [
+          ...new Set(products.map((product) => product.category)),
+        ];
 
+        setCategories(uniqueCategory);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <>
       <nav className="container-fluid">
@@ -36,79 +56,30 @@ const NavBar = () => {
                   }`}
                 >
                   <ul>
-                    <li>
-                      <Link to="/">
-                        <Button>fruits & vegetables <LiaAngleRightSolid className="ml auto"/>
-                        </Button>
-                      </Link>
-                      <div className="subMenu">
-                        <Link to="/">
-                          <span>cuts & sprouts</span>
-                        </Link>
-                        <Link to="/">
-                          <span>Exotic fruits & veggies</span>
-                        </Link>
-                        <Link to="/">
-                          <span>Fresh fruits</span>
-                        </Link>
-                        <Link to="/">
-                          <span>fresh vegetables</span>
-                        </Link>
-                        <Link to="/">
-                          <span>herbs & seasonings</span>
-                        </Link>
-                      </div>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>meats & seafood</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>breakfast & dairy</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>Beverages</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>Breads & Bakery</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>frozen foods</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>Biscuits & snacks</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>grocery & staples</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>value of the day</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>top 100 offers</Button>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <Button>New arrivals</Button>
-                      </Link>
-                    </li>
+                    {categories.map((category, index) => {
+                      const categoryProudcts = products.filter(
+                        (product) => product.category == category);
+                      return (
+                        <li key={index}>
+                          <Link to="/">
+                            <Button>
+                              {category}
+                              <LiaAngleRightSolid className="ml auto" />
+                            </Button>
+                          </Link>
+                          <div className="subMenu">
+                            {categoryProudcts.length > 0 ? (
+                              categoryProudcts.map((product) => (
+                                <span>{product.name}</span>
+                              ))
+                            ) : (
+                              <span>"No products"</span>
+                            )}
+                            <span></span>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>

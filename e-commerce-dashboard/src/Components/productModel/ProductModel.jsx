@@ -147,6 +147,9 @@ const ProductModel = ({ closeProductModel, product }) => {
             precision={0.5}
             readOnly
           />
+                    <span className="ml-1">
+            <b>{product?.ratings} <i>by</i> </b>
+          </span>
           <span className="ml-2">
             <b>{product?.count} customers</b>
           </span>

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
-import { Button, IconButton, Checkbox, CircularProgress } from "@mui/material";
+import { Button, IconButton, Checkbox } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import ProductModel from "../productModel/ProductModel";
 import { myContext } from "../../App";
 import { toast, Bounce } from "react-toastify"; // For notifications
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, expanded }) => {
   const [isOpenProductModel, setIsOpenProductModel] = useState(false);
   const { cartItems, setCartItems, dollerToRupees } = useContext(myContext); // Access context
   const [isFavorite, setIsFavorite] = useState(false);
@@ -135,6 +135,14 @@ const ProductCard = ({ product }) => {
               ₹{Number(product.price * dollerToRupees).toFixed(2)}
             </span>
           </div>
+          {/* Show more details if expanded */}
+          {expanded && (
+            <div className="moreDetails mt-2">
+              <p>{product.description}</p>
+              <p>Category: {product.category}</p>
+              <p>Stock: {product.stock}</p>
+            </div>
+          )}
         </div>
       </div>
 
