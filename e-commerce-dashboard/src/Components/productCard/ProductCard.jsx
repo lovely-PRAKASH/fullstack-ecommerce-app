@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { Button, IconButton, Checkbox, CircularProgress } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
-
 import { AiOutlineFullscreen } from "react-icons/ai";
 import ProductModel from "../productModel/ProductModel";
 import { myContext } from "../../App";
@@ -81,7 +80,7 @@ const ProductCard = ({ product }) => {
           />
           <span
             className={`badge ${
-              product.offers <=50 ? "badge-primary" : "badge-error"
+              product.offers <= 50 ? "badge-primary" : "badge-error"
             }`}
           >
             {product.offers}%
@@ -101,9 +100,6 @@ const ProductCard = ({ product }) => {
                 checked={isFavorite}
                 sx={{
                   color: isFavorite ? "red" : "default",
-                  // "&.Mui-checked": {
-                  //   color: "red", // Force checked color to be red
-                  // },
                 }}
               />
             </IconButton>
@@ -112,7 +108,7 @@ const ProductCard = ({ product }) => {
         <div className="info">
           <h4>
             {product.name.length > 20
-              ? product.name.substr(0, 20) + "..."
+              ? product.name.substr(0, 15) + "..."
               : product.name}
           </h4>
           <span
@@ -146,7 +142,6 @@ const ProductCard = ({ product }) => {
         <ProductModel closeProductModel={closeProductModel} product={product} />
       )}
     </>
-          
   );
 };
 
