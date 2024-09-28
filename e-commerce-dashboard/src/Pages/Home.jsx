@@ -91,7 +91,6 @@ function Home() {
                   ))}
                 </Swiper>
               </div>
-
               {/* New Products Section */}
               <div className="d-flex align-items-center mt-4 mb-4">
                 <div className="info w-75">
