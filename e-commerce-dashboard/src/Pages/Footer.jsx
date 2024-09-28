@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Footer() {
@@ -22,8 +22,8 @@ function Footer() {
           <div className="col-md-4 mb-2 text-center">
             <h5 className="text-uppercase mb-4">Follow Us</h5>
             <div className="d-flex justify-content-center">
-              <a href="https://www.facebook.com" className="text-white mx-2">
-                <FaFacebookF size={24} />
+              <a href="https://github.com/lovely-PRAKASH" className="text-white mx-2">
+                <FaGithub size={24} />
               </a>
               <a href="https://www.twitter.com" className="text-white mx-2">
                 <FaTwitter size={24} />
@@ -31,7 +31,7 @@ function Footer() {
               <a href="https://www.instagram.com" className="text-white mx-2">
                 <FaInstagram size={24} />
               </a>
-              <a href="https://www.linkedin.com" className="text-white mx-2">
+              <a href="https://www.linkedin.com/in/prakash-arthanarisamy-2a1323204/" className="text-white mx-2">
                 <FaLinkedinIn size={24} />
               </a>
             </div>
