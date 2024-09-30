@@ -3,9 +3,8 @@ const orderModel = require("../models/orderModel");
 
 // orderController api- api/v1/order/
 exports.createOrders = async (req, res, next) => {
-  // console.log(req.body, 'data');
+  console.log(req.body, 'data');
   // const order=orderModel.create(req.body);
-
   const cartItems = req.body;
   const amount = Number(
     cartItems.reduce((acc, item) => acc + item.product.price * item.qty, 0)

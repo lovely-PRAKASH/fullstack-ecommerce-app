@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import NavBar from "./Navigation/NavBar"
 import logo from "../../assets/logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import CountryDrop from "../CountryDropDown/CountryDrop";
@@ -115,7 +116,7 @@ function Header({ cartItems }) {
         </div>
       </header>
       {/* nav bar starts here */}
-      {/* <NavBar /> */}
+      <NavBar />
       {/* nav bar ends here */}
     </div>
   );

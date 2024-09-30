@@ -18,6 +18,7 @@ import Footer from "./Footer";
 function Home() {
   const [products, setProducts] = useState([]);
   const [searchParms, setSearchParms] = useSearchParams();
+  const [expandedView, setExpandedView] = useState(false); // State to track expanded view
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +35,10 @@ function Home() {
 
     fetchProducts();
   }, [searchParms]);
+
+  const toggleViewAll = () => {
+    setExpandedView(!expandedView); // Toggle expanded state
+  };
 
   return (
     <>
@@ -67,8 +72,8 @@ function Home() {
                     Do not miss the current offers until the end of March.
                   </p>
                 </div>
-                <Button className="viewAllBtn ml-auto">
-                  View All <BsArrowRight />
+                <Button className="viewAllBtn ml-auto" onClick={toggleViewAll}>
+                  {expandedView ? "Show Less" : "View Detail"} <BsArrowRight />
                 </Button>
               </div>
               <div className="product_row w-100">
@@ -86,12 +91,15 @@ function Home() {
                 >
                   {products.map((product) => (
                     <SwiperSlide key={product.id}>
-                      <ProductCard product={product} />
+                      <ProductCard
+                        product={product}
+                        expanded={expandedView} // Pass expanded state to ProductCard
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>
               </div>
-
+              
               {/* New Products Section */}
               <div className="d-flex align-items-center mt-4 mb-4">
                 <div className="info w-75">
@@ -100,15 +108,18 @@ function Home() {
                     New products with updated stocks.
                   </p>
                 </div>
-                <Button className="viewAllBtn ml-auto">
-                  View All <BsArrowRight />
+                <Button className="viewAllBtn ml-auto" onClick={toggleViewAll}>
+                  {expandedView ? "Show Less" : "View Detail"} <BsArrowRight />
                 </Button>
               </div>
 
               <div className="product_row d-flex flex-wrap justify-content-between">
                 {products.map((product) => (
                   <div key={product.id} className="col-6 col-md-4 col-lg-3 mb-4">
-                    <ProductCard product={product} />
+                    <ProductCard
+                      product={product}
+                      expanded={expandedView} // Pass expanded state to ProductCard
+                    />
                   </div>
                 ))}
               </div>
@@ -116,7 +127,7 @@ function Home() {
           </div>
         </div>
         <footer>
-          <Footer/>
+          <Footer />
         </footer>
       </section>
     </>

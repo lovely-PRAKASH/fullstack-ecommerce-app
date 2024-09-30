@@ -486,6 +486,11 @@ position: relative;
   font-size: 12px;
   font-weight: 600;
 }
+.info .moreDetails p{
+  color:rgba(0, 0, 0,0.5);
+  font-size: 13px;
+  font-family: "lato";
+}
 .stock{                                     /* for product model */
   display: inline-block;
   font-family: "dosis";
@@ -496,6 +501,10 @@ position: relative;
   display: inline-block;
   padding: 7px 10px;
 }
+.badge.badge-error{
+  background-color: #ea2b0f;
+  color:white;
+}
 
 .stock.bg-success{
   background: #e5f8ed !important;
@@ -505,7 +514,9 @@ position: relative;
   display: inline;
   gap:5px;
   font-family:"dosis";
-  text-wrap:wrap
+  text-wrap:wrap;
+  justify-content: center;
+  align-items: center;
 }
 .oldPrice{
   color: rgb(0, 0, 0,0.3);
@@ -517,10 +528,12 @@ position: relative;
   font-size: 19.5px;
 }
 .newPrice{
-  display: inline-flex;
+  display: block;
   font-weight: 600;
   font-size: 18px;
   text-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .newPrice.lg{
   font-weight: 600;
@@ -557,6 +570,7 @@ position: relative;
   transition:all 0.3s ease-in-out;
   width: 140px;
   height: 140px;
+  object-fit: contain;
   padding:5px;
   justify-content: center;
   align-items: center;
@@ -595,8 +609,8 @@ position: relative;
   min-width: 40px;
   border:1px solid rgb(0, 0, 0,0.1);
   margin-top: 2px;
-  transition: all 0.1s ease-in-out;
-  /* background: transparent; */
+  /* transition: all 0.1s ease-in-out; */
+  background: white;
   box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
   transition:  0.2s ease-in-out;
 
@@ -611,14 +625,14 @@ position: relative;
 /* .productItem .imgwrapper .actions:hover .actions .heartBtn {
   transition: all 0.8s ease-in-out;
 } */
-.productItem .imgwrapper .actions Button:hover {
+.productItem .imgwrapper .actions Button .zoom:hover {
   background: #233a95
 }
 .productItem .imgwrapper .actions Button svg{
   font-size: 18px;
-  color: rgb(0, 0, 0,0.5);
+  /* color: rgb(0, 0, 0,0.5); */
 }
-.productItem .imgwrapper .actions Button:hover svg{
+.productItem .imgwrapper .actions Button:hover .zoom{
   color: white;
 }
 
@@ -819,6 +833,17 @@ img.mr-2 {
   border:1px solid rgb(0, 0, 0,0.3)
 }
 
+footer a {
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #f1f1f1; /* Change to any color on hover */
+}
+
+footer p {
+  margin: 0;
+}
 
 
 

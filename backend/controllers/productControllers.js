@@ -3,15 +3,25 @@ const ProductModel = require("../models/productModel");
 // get product api-/api/v1/products/
 exports.getProduct = async (req, res, next) => {
   try {
-    const query = req.query.keyword
-      ? {
-          name: {
-            $regex: req.query.keyword,
-            $options: "i",
-          },
-        }
-      : {};
+    // Create query object based on keyword and category
+    const query = {};
+
+    // If keyword exists, add regex-based name search to the query
+    if (req.query.keyword) {
+      query.name = {
+        $regex: req.query.keyword,
+        $options: "i", // case-insensitive search
+      };
+    }
+
+    // If category exists, add category filter to the query
+    if (req.query.category) {
+      query.category = req.query.category;
+    }
+
+    // Fetch products based on the constructed query
     const products = await ProductModel.find(query);
+    
     res.json({
       success: true,
       products,

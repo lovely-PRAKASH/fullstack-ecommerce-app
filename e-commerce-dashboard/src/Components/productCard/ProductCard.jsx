@@ -1,15 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
-import { Button } from "@mui/material";
+import { Button, IconButton, Checkbox } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { AiOutlineFullscreen } from "react-icons/ai";
-import { GoHeart } from "react-icons/go";
 import ProductModel from "../productModel/ProductModel";
 import { myContext } from "../../App";
 import { toast, Bounce } from "react-toastify"; // For notifications
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, expanded }) => {
   const [isOpenProductModel, setIsOpenProductModel] = useState(false);
   const { cartItems, setCartItems, dollerToRupees } = useContext(myContext); // Access context
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // Check if the item is already in the cart (favorite)
+  useEffect(() => {
+    const itemInCart = cartItems.some(
+      (item) => item.product._id === product._id
+    );
+    setIsFavorite(itemInCart);
+  }, [cartItems, product._id]);
 
   const viewProductDetail = () => {
     setIsOpenProductModel(true);
@@ -19,18 +28,19 @@ const ProductCard = ({ product }) => {
     setIsOpenProductModel(false);
   };
 
-  const addToCart = (product) => {
+  const handleFavoriteToggle = (product) => {
     const itemExist = cartItems.find(
       (item) => item.product._id === product._id
     );
 
     if (!itemExist) {
-      const newItem = { product, qty: 1 }; // Add default quantity as 1
+      // Add product to the cart
+      const newItem = { product, qty: 1 };
       setCartItems((state) => [...state, newItem]);
       toast.success(`${product.name} is successfully added to cart`, {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -38,11 +48,17 @@ const ProductCard = ({ product }) => {
         theme: "colored",
         transition: Bounce,
       });
+      setIsFavorite(true); // Mark as favorite
     } else {
-      toast.error(`${product.name} is already in the cart`, {
+      // Remove product from the cart
+      const updatedCart = cartItems.filter(
+        (item) => item.product._id !== product._id
+      );
+      setCartItems(updatedCart);
+      toast.info(`${product.name} is removed from the cart`, {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -50,6 +66,7 @@ const ProductCard = ({ product }) => {
         theme: "colored",
         transition: Bounce,
       });
+      setIsFavorite(false); // Unmark as favorite
     }
   };
 
@@ -61,24 +78,37 @@ const ProductCard = ({ product }) => {
             src={product?.images?.[0].image || "default-image.jpg"}
             alt="Product"
           />
-          <span className="badge badge-primary">20%</span>
+          <span
+            className={`badge ${
+              product.offers <= 50 ? "badge-primary" : "badge-error"
+            }`}
+          >
+            {product.offers}%
+          </span>
 
           <div className="actions">
-            <Button onClick={viewProductDetail}>
+            <Button className="zoom" onClick={viewProductDetail}>
               <AiOutlineFullscreen />
             </Button>
-            <Button
-              className="heartBtn"
-              onClick={() => addToCart(product)} // Add to cart on heart button click
+            <IconButton
+              aria-label="add to favorites"
+              onClick={() => handleFavoriteToggle(product)}
             >
-              <GoHeart />
-            </Button>
+              <Checkbox
+                icon={<FavoriteBorder />}
+                checkedIcon={<Favorite sx={{ color: "red" }} />}
+                checked={isFavorite}
+                sx={{
+                  color: isFavorite ? "red" : "default",
+                }}
+              />
+            </IconButton>
           </div>
         </div>
         <div className="info">
           <h4>
             {product.name.length > 20
-              ? product.name.substr(0, 20) + "..."
+              ? product.name.substr(0, 15) + "..."
               : product.name}
           </h4>
           <span
@@ -95,19 +125,24 @@ const ProductCard = ({ product }) => {
             precision={0.5}
             readOnly
           />
-          <div className="price">
+          <div className="price ml-1">
             <del className="oldPrice">
               <span>
-                ₹
-                {Number((product.price * dollerToRupees) * 2).toFixed(
-                  2
-                )}
+                ₹{Number(product.price * dollerToRupees * 2).toFixed(2)}
               </span>
             </del>
             <span className="newPrice text-danger ml-1">
               ₹{Number(product.price * dollerToRupees).toFixed(2)}
             </span>
           </div>
+          {/* Show more details if expanded */}
+          {expanded && (
+            <div className="moreDetails mt-2">
+              <p>{product.description}</p>
+              <p>Category: {product.category}</p>
+              <p>Stock: {product.stock}</p>
+            </div>
+          )}
         </div>
       </div>
 
