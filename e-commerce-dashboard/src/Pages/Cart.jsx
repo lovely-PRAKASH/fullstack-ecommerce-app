@@ -248,7 +248,7 @@ const Cart = ({ cartItems, setCartItems }) => {
     <div className="container mt-4">
       <div className="orderCart row d-flex">
         <h4 className="orderh4 justify-content-center">Your Order is Placed Successfully</h4> <br /> <br />
-        <p>Your Order has been Placed successfully!</p>
+        <p>Your Order has been Placed successfully!!</p>
       </div>
     </div>
   );
