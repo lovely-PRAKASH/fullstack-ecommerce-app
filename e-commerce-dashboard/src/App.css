@@ -43,7 +43,7 @@ body {
     transform: translateX(-100%); /* End off the left edge */
   }
 }
-
+/*header css starts here  */
 .headerWrapper .scrolling-text{
   display: inline-block;
   white-space: nowrap; /* Prevent text wrapping */
