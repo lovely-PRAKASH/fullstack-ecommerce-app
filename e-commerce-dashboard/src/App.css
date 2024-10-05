@@ -34,7 +34,7 @@ body {
   justify-content:center;
   align-items: center;
 }
-
+/*key frames added for transision  */
 @keyframes scroll-text {
   0% {
     transform: translateX(100%); /* Start off the right edge */
